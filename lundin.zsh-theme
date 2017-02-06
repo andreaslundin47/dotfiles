@@ -30,24 +30,24 @@ ZSH_THEME_GIT_PROMPT_RENAMED="%{$YELLOW%}➜%{$RESET%}"
 ZSH_THEME_GIT_PROMPT_STASHED="%{$RED%}•%{$RESET%}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$BOLD_BLUE%}?%{$RESET%}"
 
-remote_status() {
-  INDEX=$(command git remote update; git status --porcelain -b 2> /dev/null)
-  STATUS=""
-  if $(echo "$INDEX" | grep '^## .*ahead' &> /dev/null); then
-    STATUS="$ZSH_THEME_GIT_PROMPT_AHEAD$STATUS"
-  fi
-  if $(echo "$INDEX" | grep '^## .*behind' &> /dev/null); then
-    STATUS="$ZSH_THEME_GIT_PROMPT_BEHIND$STATUS"
-  fi
-  if $(echo "$INDEX" | grep '^## .*ahead* .*behind' &> /dev/null); then
-    STATUS=""
-    STATUS="$ZSH_THEME_GIT_PROMPT_DIVERGED$STATUS"
-  fi
-  echo $STATUS
-}
+#remote_status() {
+#  INDEX=$(command git status --porcelain -b 2> /dev/null)
+#  STATUS=""
+#  if $(echo "$INDEX" | grep '^## .*ahead' &> /dev/null); then
+#    STATUS="$ZSH_THEME_GIT_PROMPT_AHEAD$STATUS"
+#  fi
+#  if $(echo "$INDEX" | grep '^## .*behind' &> /dev/null); then
+#    STATUS="$ZSH_THEME_GIT_PROMPT_BEHIND$STATUS"
+#  fi
+#  if $(echo "$INDEX" | grep '^## .*ahead* .*behind' &> /dev/null); then
+#    STATUS=""
+#    STATUS="$ZSH_THEME_GIT_PROMPT_DIVERGED$STATUS"
+#  fi
+#  echo $STATUS
+#}
 
 
-PROMPT='%{$BOLD_CYAN%}%n%{$RESET%}@%{$BOLD_MAGENTA%}%M:%{$BOLD_GREEN%}%c%{$RESET%}$(git_prompt_info)$($remote_status)$(git_prompt_status)%{$RESET%} %{$BOLD_CYAN%}%(!.#.$)%{$RESET%} '
+PROMPT='%{$BOLD_CYAN%}%n%{$RESET%}@%{$BOLD_MAGENTA%}%M:%{$BOLD_GREEN%}%c%{$RESET%}$(git_prompt_info)$(git_prompt_status)%{$RESET%} %{$BOLD_CYAN%}%(!.#.$)%{$RESET%} '
 
 
 
