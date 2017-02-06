@@ -31,7 +31,7 @@ ZSH_THEME_GIT_PROMPT_STASHED="%{$RED%}•%{$RESET%}"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$BOLD_BLUE%}?%{$RESET%}"
 
 remote_status() {
-  INDEX=$(command git status --porcelain -b 2> /dev/null)
+  INDEX=$(command git remote update; git status --porcelain -b 2> /dev/null)
   STATUS=""
   if $(echo "$INDEX" | grep '^## .*ahead' &> /dev/null); then
     STATUS="$ZSH_THEME_GIT_PROMPT_AHEAD$STATUS"
