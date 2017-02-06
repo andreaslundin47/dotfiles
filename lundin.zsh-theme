@@ -14,7 +14,7 @@ RESET=$reset_color
 # Foramt for branch name and dirt/clean
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$BOLD_BLUE%} git:(%{$RED%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$BOLD_BLUE%})%{$RESET%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$YELLOW%}*"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$RED%}*"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 # Format for remote_status()
