@@ -89,7 +89,7 @@ filetype plugin indent on    " required
 " Set backspace behaviour
     set backspace=2
 " Use highlighted cursor line
-    set cursorline
+    "set cursorline
 
 " Map the leader key
     let mapleader="\<Space>"
