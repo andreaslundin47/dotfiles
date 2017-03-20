@@ -56,8 +56,17 @@ call vundle#begin()
 " Nerd Commenter plugin
     Plugin 'scrooloose/nerdcommenter'
 
-" completion
-    " Plugin 'Valloric/YouCompleteMe'
+" Emmet-vim plugin
+    Plugin 'mattn/emmet-vim'
+
+" Close-tag Plugin
+    Plugin 'alvan/vim-closetag'
+
+" Better javascript highlighting
+    Plugin 'jelera/vim-javascript-syntax'
+
+" Easy align Plugin
+    Plugin 'junegunn/vim-easy-align'
 
 " All  f your Plugins must be added before the following line
 call vundle#end()            " required
