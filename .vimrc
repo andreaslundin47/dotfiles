@@ -47,6 +47,9 @@ call vundle#begin()
 " Surround plugin
     Plugin 'tpope/vim-surround'
 
+" Repeat plugin - Enables dot repeat command for seveal plugins
+    Plugin 'tpope/vim-repeat'
+
 " Easy motion
     Plugin 'easymotion/vim-easymotion'
 
@@ -143,7 +146,8 @@ filetype plugin indent on    " required
 " Set background and colors
     set background=dark
     set t_Co=256
-    colorscheme lucario
+    " colorscheme lucario
+    colorscheme dracula
     highlight Normal ctermbg=none
     highlight NonText ctermbg=none
 
