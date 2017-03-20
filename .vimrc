@@ -149,8 +149,8 @@ filetype plugin indent on    " required
 " Set background and colors
     set background=dark
     set t_Co=256
-    " colorscheme lucario
-    colorscheme dracula
+    colorscheme lucario
+    " colorscheme dracula
     highlight Normal ctermbg=none
     highlight NonText ctermbg=none
 
@@ -161,7 +161,7 @@ filetype plugin indent on    " required
 " Determine indent type from file type
     filetype plugin indent on
 
-" Hidden
+" Hidden - Lets me move between buffers without saving every. Single. Time.
     set hidden
 
 " Disable backup files
