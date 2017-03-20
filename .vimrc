@@ -53,6 +53,9 @@ call vundle#begin()
 " Easy motion
     Plugin 'easymotion/vim-easymotion'
 
+" Nerd Commenter plugin
+    Plugin 'scrooloose/nerdcommenter'
+
 " completion
     " Plugin 'Valloric/YouCompleteMe'
 
