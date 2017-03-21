@@ -68,6 +68,10 @@ call vundle#begin()
 " Easy align Plugin
     Plugin 'junegunn/vim-easy-align'
 
+" Improved syntax highlighting
+    Plugin 'vim-scripts/cSyntaxAfter'
+
+
 " All  f your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -156,12 +160,14 @@ filetype plugin indent on    " required
     syntax on
 
 " Set background and colors
-    set background=dark
     set t_Co=256
-    colorscheme lucario
-    " colorscheme dracula
     highlight Normal ctermbg=none
     highlight NonText ctermbg=none
+    
+    " Needs to be after the above for background color to be right
+    colorscheme Monokai-Refined
+    " colorscheme lucario
+    " colorscheme dracula
 
     highlight LineNr ctermfg=None ctermbg=None
     highlight CursorLineNr ctermfg=Yellow gui=bold guifg=Yellow
@@ -219,3 +225,10 @@ autocmd FileType tex call Tex_MakeMap('<leader>ll', '<ESC>:update!<CR>:call Tex_
 let g:Tex_AutoFolding = 0
 let g:Tex_SmartKeyQuote = 0
 
+" Settings for java highlighting
+let java_mark_braces_in_parens_as_errors=1
+let java_highlight_java_lang_ids=1
+let java_highlight_functions="style"
+
+" Activate more highlighting from cSyntaxAfter plugin
+autocmd! FileType c,cpp,java,php call CSyntaxAfter()
