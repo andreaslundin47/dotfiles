@@ -17,8 +17,8 @@ call vundle#begin()
 " Install lucario theme
     Plugin 'raphamorim/lucario'
 
-" Install material theme
-    Plugin 'jdkanani/vim-material-theme'
+" Install Monokai refined theme
+    Plugin 'jaromero/vim-monokai-refined'
 
 " Install airline status bar
     Plugin 'vim-airline/vim-airline'
