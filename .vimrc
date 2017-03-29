@@ -232,6 +232,7 @@ autocmd FileType tex call Tex_MakeMap('<leader>ll', '<ESC>:update!<CR>:call Tex_
 
 let g:Tex_AutoFolding = 0
 let g:Tex_SmartKeyQuote = 0
+let g:Tex_DefaultTargetFormat='pdf'
 
 " Settings for java highlighting
 let java_mark_braces_in_parens_as_errors=1
