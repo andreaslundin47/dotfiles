@@ -20,6 +20,9 @@ call vundle#begin()
 " Install Monokai refined theme
     Plugin 'jaromero/vim-monokai-refined'
 
+" Install the quantum colourscheme
+    Plugin 'tyrannicaltoucan/vim-quantum'
+
 " Install airline status bar
     Plugin 'vim-airline/vim-airline'
 
@@ -71,6 +74,11 @@ call vundle#begin()
 " Improved syntax highlighting
     Plugin 'vim-scripts/cSyntaxAfter'
 
+" Install ultisnippets
+    Plugin 'SirVer/ultisnips'
+
+" Install snippets
+    Plugin 'honza/vim-snippets'
 
 " All  f your Plugins must be added before the following line
 call vundle#end()            " required
@@ -240,3 +248,13 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+
+" Snippets settings
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
