@@ -264,3 +264,6 @@ let g:UltiSnipsEditSplit="vertical"
 
 " Fixes the indenting in html style tags
 let g:html_indent_style1 = "inc" 
+
+" Slowest but most accurate syntax highlighting
+autocmd BufEnter * :syntax sync fromstart
