@@ -65,6 +65,9 @@ call vundle#begin()
 " Close-tag Plugin
     Plugin 'alvan/vim-closetag'
 
+" Better html indentation
+    Plugin 'bitfyre/vim-indent-html'
+
 " Better javascript highlighting
     Plugin 'jelera/vim-javascript-syntax'
 
@@ -80,7 +83,7 @@ call vundle#begin()
 " Install snippets
     Plugin 'honza/vim-snippets'
 
-" All  f your Plugins must be added before the following line
+" All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -259,3 +262,5 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
+" Fixes the indenting in html style tags
+let g:html_indent_style1 = "inc" 
