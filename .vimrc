@@ -35,6 +35,9 @@ call vundle#begin()
 " vim-fugitive for git integration
     Plugin 'tpope/vim-fugitive'
 
+" Plugin for git status in line number column
+    Plugin 'airblade/vim-gitgutter'
+
 " python-mode
     Plugin 'klen/python-mode'
 "
@@ -267,3 +270,7 @@ let g:html_indent_style1 = "inc"
 
 " Slowest but most accurate syntax highlighting
 autocmd BufEnter * :syntax sync fromstart
+
+" Set the update frequenzy of the git gutter
+set updatetime=500
+
