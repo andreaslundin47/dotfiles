@@ -11,37 +11,27 @@ call vundle#begin()
 " let Vundle manage Vundle, required
     Plugin 'VundleVim/Vundle.vim'
 
-" Install dracula theme
+" Colorschemes
     Plugin 'dracula/vim'
-
-" Install lucario theme
     Plugin 'raphamorim/lucario'
-
-" Install Monokai refined theme
     Plugin 'jaromero/vim-monokai-refined'
-
-" Install the quantum colourscheme
     Plugin 'tyrannicaltoucan/vim-quantum'
 
 " Install airline status bar
     Plugin 'vim-airline/vim-airline'
 
-" vim-airline-themes
+" Themes for the airline status bar
     Plugin 'vim-airline/vim-airline-themes'
 
-" nerdtree for file browsing
+" browse file system in side window
     Plugin 'scrooloose/nerdtree'
 
-" vim-fugitive for git integration
+" Different types of git integration
     Plugin 'tpope/vim-fugitive'
-
-" Plugin for git status in line number column
     Plugin 'airblade/vim-gitgutter'
 
-" python-mode
+" python-mode and better python highlighting
     Plugin 'klen/python-mode'
-"
-" better python syntax highlighting
     Plugin 'hdima/python-syntax'
 
 " extra syntax highlighting for C/C++
@@ -50,41 +40,44 @@ call vundle#begin()
 " Arduino syntax and indentation
     Plugin 'sudar/vim-arduino-syntax'
 
-" Surround plugin
+" Surround plugin - edit inside "')}] etc. easier
     Plugin 'tpope/vim-surround'
 
-" Repeat plugin - Enables dot repeat command for seveal plugins
+" Repeat plugin - Enables dot repeat command for several other plugins
     Plugin 'tpope/vim-repeat'
 
-" Easy motion
+" Easy motion - allows fast navigation
     Plugin 'easymotion/vim-easymotion'
 
-" Nerd Commenter plugin
+" Nerd Commenter plugin - Easy to add or remove commented lines
     Plugin 'scrooloose/nerdcommenter'
 
-" Emmet-vim plugin
+" Emmet-vim plugin - html/css shortcuts
     Plugin 'mattn/emmet-vim'
 
-" Close-tag Plugin
+" Close-tag Plugin - auto add closing html tags
     Plugin 'alvan/vim-closetag'
 
-" Better html indentation
+" Better html indentation - Improves the indentation behaviour for html/css
     Plugin 'bitfyre/vim-indent-html'
 
 " Better javascript highlighting
     Plugin 'jelera/vim-javascript-syntax'
 
-" Easy align Plugin
+" Easy align Plugin - 
     Plugin 'junegunn/vim-easy-align'
 
-" Improved syntax highlighting
+" Some more general syntax highlighting improvements
     Plugin 'vim-scripts/cSyntaxAfter'
 
-" Install ultisnippets
+" Insert code template snippets
     Plugin 'SirVer/ultisnips'
 
-" Install snippets
+" Add library of snippets to use
     Plugin 'honza/vim-snippets'
+
+" inserts lines that show the indentation level
+    Plugin 'Yggdroot/indentLine'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -107,36 +100,65 @@ filetype plugin indent on    " required
 
 
 
-" General settings
+" *************************  General settings ****************************
 
-" Line numbers
+" Show line numbers in left column
     set number
-" Tab width
+" Tab width uses this number of spaces
     set tabstop=4
 " Auto-indent width
     set shiftwidth=4
 " Convert tabs to spaces
     set expandtab
-" Set laststatus
+" Set laststatus to always be shown, even when there is only one window
     set laststatus=2
-" Set backspace behaviour
+" Set backspace behaviour to work like in most other programs
     set backspace=2
-" Use highlighted cursor line
-    "set cursorline
 
-" Map the leader key
+" Use syntax highlighting
+    syntax on
+
+" Always determine syntax highlighting from start of file. Slowest but
+" most accurate
+    autocmd BufEnter * :syntax sync fromstart
+
+" Determine indent type from file type
+    filetype plugin indent on
+
+" Set background and colors. Not sure if this is even needed
+    set t_Co=256
+    
+" Default colorscheme 
+    colorscheme Monokai-Refined
+
+" Removes the colorschemes highlighting of the line numbers
+    highlight LineNr ctermfg=None ctermbg=None
+
+" Allows switching between buffers and tabs without saving changes first
+    set hidden
+
+" Do not create any extra backup-files
+    set nobackup
+    set nowritebackup
+    set noswapfile
+
+" Use system clipboard, copy/paste same for everywhere
+    set clipboard=unnamed
+    set clipboard=unnamedplus
+
+
+
+
+
+" ************************** General keymappings ************************
+
+" Chose where to map the leader key
     let mapleader="\<Space>"
 
 " Tab management
     nnoremap <S-q> :bprevious<CR>
     nnoremap <S-t> :tabnew<CR>
     nnoremap <S-e> :bnext<CR>
-
-" Bind nerdtree
-    nnoremap <Leader>n :NERDTreeToggle<CR>
-
-" Bind fugitive Gstatus
-    nnoremap <Leader>g :Gstatus<CR>
 
 " Split screen movement bindings
     nnoremap <C-Left> <C-w>h
@@ -158,7 +180,7 @@ filetype plugin indent on    " required
     nnoremap <Leader>z <C-w>>
     nnoremap <Leader>/ <C-w><
 
-" Set quick save
+" Set save shortcut
     nnoremap <Leader>w :w<CR>
 
 " Set quick close
@@ -170,107 +192,119 @@ filetype plugin indent on    " required
 " Set quick buffer next
     nnoremap <Leader>e :bnext<CR>
 
-" Syntax highlighting
-    syntax on
 
-" Set background and colors
-    set t_Co=256
-    highlight Normal ctermbg=none
-    highlight NonText ctermbg=none
-    
-    " Needs to be after the above for background color to be right
-    colorscheme Monokai-Refined
-    " colorscheme lucario
-    " colorscheme dracula
 
-    highlight LineNr ctermfg=None ctermbg=None
-    highlight CursorLineNr ctermfg=Yellow gui=bold guifg=Yellow
-    " highlight CursorLine ctermbg=SteelBlue
 
-" Determine indent type from file type
-    filetype plugin indent on
 
-" Hidden - Lets me move between buffers without saving every. Single. Time.
-    set hidden
+" ******************** Plugin specific settings and keymappings *****************
 
-" Disable backup files
-    set nobackup
-    set nowritebackup
-    set noswapfile
-
-" Use system clipboard, copy/paste same for everywhere
-    set clipboard=unnamed
-    set clipboard=unnamedplus
 
 " vim-airline configuration
     let g:airline_powerline_fonts = 1
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#fnamemod = ':t'
 
+
+
 " Python mode
     let g:pymode_rope = 0
     let g:pymode_folding = 0
     let g:pymode_options_colorcolumn = 0
 
-" LaTeX specific setting
+
+
+" LaTeX-suite specific setting
+
+    " Break lines when they exceed 80 characters
     au Filetype tex setlocal tw=80
-    " au Filetype tex setlocal spell spelllang=en_gb
 
+    " REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
+    filetype plugin on
 
-" REQUIRED. This makes vim invoke Latex-Suite when you open a tex file.
-filetype plugin on
+    " IMPORTANT: grep will sometimes skip displaying the file name if you
+    " search in a singe file. This will confuse Latex-Suite. Set your grep
+    " program to always generate a file-name.
+    set grepprg=grep\ -nH\ $*
 
-" IMPORTANT: grep will sometimes skip displaying the file name if you
-" search in a singe file. This will confuse Latex-Suite. Set your grep
-" program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
+    " OPTIONAL: This enables automatic indentation as you type.
+    filetype indent on
 
-" OPTIONAL: This enables automatic indentation as you type.
-filetype indent on
+    " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+    " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+    " The following changes the default filetype back to 'tex':
+    let g:tex_flavor='latex'
 
-" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
-" 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
+    " Set shortcuts for compilation and viewing of output file
+    autocmd FileType tex call Tex_MakeMap('<leader>ll', ':update!<CR>:call Tex_RunLaTeX()<CR>', 'n', '<buffer>')
+    autocmd FileType tex call Tex_MakeMap('<leader>ll', '<ESC>:update!<CR>:call Tex_RunLaTeX()<CR>', 'v', '<buffer>')
 
-autocmd FileType tex call Tex_MakeMap('<leader>ll', ':update!<CR>:call Tex_RunLaTeX()<CR>', 'n', '<buffer>')
-autocmd FileType tex call Tex_MakeMap('<leader>ll', '<ESC>:update!<CR>:call Tex_RunLaTeX()<CR>', 'v', '<buffer>')
-
-let g:Tex_AutoFolding = 0
-let g:Tex_SmartKeyQuote = 0
-let g:Tex_DefaultTargetFormat='pdf'
-
-" Settings for java highlighting
-let java_mark_braces_in_parens_as_errors=1
-let java_highlight_java_lang_ids=1
-let java_highlight_functions="style"
-
-" Activate more highlighting from cSyntaxAfter plugin
-autocmd! FileType c,cpp,java,php call CSyntaxAfter()
+    " turn off the autofolding
+    let g:Tex_AutoFolding = 0
+    " Always use normal quotation marks
+    let g:Tex_SmartKeyQuote = 0
+    " Always output pdf-files as standard
+    let g:Tex_DefaultTargetFormat='pdf'
 
 
 
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
+" Configure java highlighting
+"
+    let java_mark_braces_in_parens_as_errors=1
+    let java_highlight_java_lang_ids=1
+    let java_highlight_functions="style"
+    " Activate more highlighting from cSyntaxAfter plugin
+    autocmd! FileType c,cpp,java,php call CSyntaxAfter()
 
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
 
 
-" Snippets settings
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" EasyAlign
+    " Start interactive EasyAlign in visual mode (e.g. vipga)
+    xmap ga <Plug>(EasyAlign)
+    " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+    nmap ga <Plug>(EasyAlign)
 
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+
+
+" UltiSnips
+    " Snippets settings
+    let g:UltiSnipsExpandTrigger="<tab>"
+    let g:UltiSnipsJumpForwardTrigger="<c-b>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+    " If you want :UltiSnipsEdit to split your window.
+    let g:UltiSnipsEditSplit="vertical"
+
+
 
 " Fixes the indenting in html style tags
-let g:html_indent_style1 = "inc" 
+    let g:html_indent_style1 = "inc" 
 
-" Slowest but most accurate syntax highlighting
-autocmd BufEnter * :syntax sync fromstart
 
-" Set the update frequenzy of the git gutter
-set updatetime=500
+
+" IndentLine
+"
+    " Do not show indent lines on start
+    let g:indentLine_enabled = 0
+    " Set shortcut to toggle indent line
+    nnoremap <Leader>i :IndentLinesToggle<CR>
+
+
+
+" NerdTree
+
+    " set key to toggle showing file viewer
+    nnoremap <Leader>n :NERDTreeToggle<CR>
+
+
+
+" Bind fugitive Gstatus
+
+    " Show git status keymap
+    nnoremap <Leader>g :Gstatus<CR>
+
+
+
+" Gitgutter
+
+    " Set the update frequenzy of the git gutter
+    set updatetime=500
 
