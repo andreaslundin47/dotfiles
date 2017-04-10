@@ -235,8 +235,8 @@ filetype plugin indent on    " required
     let g:tex_flavor='latex'
 
     " Set shortcuts for compilation and viewing of output file
-    autocmd FileType tex call Tex_MakeMap('<leader>ll', ':update!<CR>:call Tex_RunLaTeX()<CR>', 'n', '<buffer>')
-    autocmd FileType tex call Tex_MakeMap('<leader>ll', '<ESC>:update!<CR>:call Tex_RunLaTeX()<CR>', 'v', '<buffer>')
+    autocmd FileType tex call Tex_MakeMap('<leader>ll', ':update!<CR>:call Tex_RunLaTeX()<CR><CR>', 'n', '<buffer>')
+    autocmd FileType tex call Tex_MakeMap('<leader>ll', '<ESC>:update!<CR>:call Tex_RunLaTeX()<CR><CR>', 'v', '<buffer>')
 
     " turn off the autofolding
     let g:Tex_AutoFolding = 0
