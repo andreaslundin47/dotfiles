@@ -16,6 +16,10 @@ call vundle#begin()
     Plugin 'raphamorim/lucario'
     Plugin 'jaromero/vim-monokai-refined'
     Plugin 'tyrannicaltoucan/vim-quantum'
+    Plugin 'crusoexia/vim-monokai'
+    Plugin 'KeitaNakamura/neodark.vim'
+    Plugin 'zacanger/angr.vim'
+    Plugin 'dikiaap/minimalist'
 
 " Install airline status bar
     Plugin 'vim-airline/vim-airline'
@@ -62,13 +66,16 @@ call vundle#begin()
     Plugin 'bitfyre/vim-indent-html'
 
 " Better javascript highlighting
-    Plugin 'jelera/vim-javascript-syntax'
+    Plugin 'pangloss/vim-javascript'
+
+" Additional javascript syntax information
+    Plugin 'crusoexia/vim-javascript-lib'
 
 " Easy align Plugin - 
     Plugin 'junegunn/vim-easy-align'
 
 " Some more general syntax highlighting improvements
-    Plugin 'vim-scripts/cSyntaxAfter'
+"    Plugin 'vim-scripts/cSyntaxAfter'
 
 " Insert code template snippets
     Plugin 'SirVer/ultisnips'
@@ -127,9 +134,10 @@ filetype plugin indent on    " required
 
 " Set background and colors. Not sure if this is even needed
     set t_Co=256
+    set background=dark
     
 " Default colorscheme 
-    colorscheme Monokai-Refined
+    colorscheme neodark
 
 " Removes the colorschemes highlighting of the line numbers
     highlight LineNr ctermfg=None ctermbg=None
@@ -252,8 +260,6 @@ filetype plugin indent on    " required
     let java_mark_braces_in_parens_as_errors=1
     let java_highlight_java_lang_ids=1
     let java_highlight_functions="style"
-    " Activate more highlighting from cSyntaxAfter plugin
-    autocmd! FileType c,cpp,java,php call CSyntaxAfter()
 
 
 
