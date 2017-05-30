@@ -8,6 +8,7 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'tyrannicaltoucan/vim-quantum'
     Plug 'crusoexia/vim-monokai'
     Plug 'KeitaNakamura/neodark.vim'
+    Plug 'mhartington/oceanic-next'
 
 " Airline statusbar
     Plug 'vim-airline/vim-airline'
@@ -32,6 +33,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Surround plugin - edit inside "')}] etc. easier
     Plug 'tpope/vim-surround'
 
+" Automatically remove trailing whitespaces
+    Plug 'thirtythreeforty/lessspace.vim'
+
 " Repeat plugin - Enables dot repeat command for several other plugins
     Plug 'tpope/vim-repeat'
 
@@ -44,8 +48,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Automatically add closing html tag
     Plug 'alvan/vim-closetag'
 
-" Better html indentation - Improves the indentation behaviour for html/css
+" Better html indentation and stuff
     Plug 'bitfyre/vim-indent-html'
+    Plug 'othree/html5.vim'
 
 " Better javascript highlighting
     Plug 'pangloss/vim-javascript'
@@ -53,7 +58,17 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Additional javascript syntax information
     Plug 'crusoexia/vim-javascript-lib'
 
-" Easy align Plugin - 
+" inserts lines that show the indentation level
+    Plug 'Yggdroot/indentLine'
+
+" Latex
+    Plug 'lervag/vimtex'
+
+" Autocompletion
+    Plug 'Shougo/deoplete.nvim', {'do': ':UpdateremotePlugins'}
+    Plug 'Shougo/echodoc.vim'
+
+" Easy align Plugin
 "    Plug 'junegunn/vim-easy-align'
 
 " Some more general syntax highlighting improvements
@@ -65,8 +80,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 " Add library of snippets to use
 "    Plugin 'honza/vim-snippets'
 
-" inserts lines that show the indentation level
-"    Plugin 'Yggdroot/indentLine'
 
 " Initialize the plugin system
 call plug#end()
@@ -75,7 +88,7 @@ call plug#end()
 " ************************** General Settings *************************
 
 " Show line number
-    set number
+    set number relativenumber
 
 " convert tabs to spaces
     set tabstop=4
@@ -86,17 +99,28 @@ call plug#end()
 " Tabs are converted to spaces
     set expandtab
 
+" Tests terminal color support
+    if (has("termguicolors"))
+        set termguicolors
+    endif
+
 " Use syntax highlighting
     syntax on
+
+" Set background and colors. Not sure if this is even needed
+    set background=dark
+
+" Use colorscheme
+    "colorscheme neodark
+    colorscheme OceanicNext
+
+    let g:airline_theme='oceanicnext'
 
 " Sync syntax highlighting from start of file all the time.
     autocmd BufEnter * :syntax sync fromstart
 
 " Use indentation based on the file ending
     filetype plugin indent on
-
-" Use colorscheme
-    colorscheme neodark
 
 " Allows switching between buffers and tabs without saving changes first
     set hidden
@@ -105,6 +129,8 @@ call plug#end()
     set nobackup
     set nowritebackup
     set noswapfile
+
+    set noshowmode
 
 " Use system clipboard, copy/paste same for everywhere
     set clipboard=unnamed
@@ -117,6 +143,7 @@ call plug#end()
 
 " Chose where to map the leader key
     let mapleader="\<Space>"
+    let maplocalleader="\\"
 
 " Movement between split windows
     nnoremap <Leader>h <C-w>h
@@ -124,14 +151,28 @@ call plug#end()
     nnoremap <Leader>k <C-w>k
     nnoremap <Leader>j <C-w>j
 
+    nnoremap <LocalLeader>h <C-w>h
+    nnoremap <LocalLeader>l <C-w>l
+    nnoremap <LocalLeader>k <C-w>k
+    nnoremap <LocalLeader>j <C-w>j
+
+
+" Moving between buffers
+    nnoremap <S-q> :bprevious<CR>
+    nnoremap <S-e> :bnext<CR>
+    nnoremap <Leader>e :bnext<CR>
+
 " Set save shortcut
     nnoremap <Leader>w :w<CR>
+
+" Set quick close
+    nnoremap <Leader>q :q<CR>
 
 " ***********************************************************************
 
 
 " vim-airline configuration
-    let g:airline_powerline_fonts = 0
+    let g:airline_powerline_fonts = 2
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#fnamemod = ':t'
 
@@ -147,7 +188,13 @@ call plug#end()
 
 
 " Fixes the indenting in html style tags
-    let g:html_indent_style1 = "inc" 
+    let g:html_indent_style1 = "inc"
+
+
+" IndentLine
+    let g:indentLine_enabled = 1
+    " Set shortcut to toggle indent line
+    nnoremap <Leader>i :IndentLinesToggle<CR>
 
 
 " Fugitive Gstatus
@@ -159,3 +206,7 @@ call plug#end()
     " Set the update frequenzy of the git gutter
     set updatetime=200
 
+" Activate deoplete
+    call deoplete#enable()
+
+    let g:echodoc_enable_at_startup = 1
