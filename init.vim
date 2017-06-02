@@ -15,6 +15,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " browse file system in side window
     Plug 'scrooloose/nerdtree'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Different types of git integration
     Plug 'tpope/vim-fugitive'
@@ -191,6 +192,12 @@ call plug#end()
     let g:html_indent_style1 = "inc"
 
 
+" Improves Java syntax highlighting to some degree
+    let java_mark_braces_in_parens_as_errors=1
+    let java_highlight_java_lang_ids=1
+    let java_highlight_functions="style"
+
+
 " IndentLine
     let g:indentLine_enabled = 1
     " Set shortcut to toggle indent line
@@ -206,7 +213,11 @@ call plug#end()
     " Set the update frequenzy of the git gutter
     set updatetime=200
 
+
 " Activate deoplete
-    call deoplete#enable()
+    let g:deoplete#enable_at_startup = 0
 
     let g:echodoc_enable_at_startup = 1
+
+    filetype plugin on
+    set omnifunc=syntaxcomplete#Complete

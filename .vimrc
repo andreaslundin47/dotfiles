@@ -256,7 +256,6 @@ filetype plugin indent on    " required
 
 
 " Configure java highlighting
-"
     let java_mark_braces_in_parens_as_errors=1
     let java_highlight_java_lang_ids=1
     let java_highlight_functions="style"
@@ -287,7 +286,6 @@ filetype plugin indent on    " required
 
 
 " IndentLine
-"
     " Do not show indent lines on start
     let g:indentLine_enabled = 0
     " Set shortcut to toggle indent line
