@@ -64,10 +64,14 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Latex
     Plug 'lervag/vimtex'
+    "Plug 'LaTeX-Box-Team/LaTeX-Box'
 
 " Autocompletion
     Plug 'Shougo/deoplete.nvim', {'do': ':UpdateremotePlugins'}
     Plug 'Shougo/echodoc.vim'
+
+" Auto Pairs
+    Plug 'jiangmiao/auto-pairs'
 
 " Easy align Plugin
 "    Plug 'junegunn/vim-easy-align'
@@ -168,6 +172,7 @@ call plug#end()
 
 " Set quick close
     nnoremap <Leader>q :q<CR>
+    nnoremap <Leader>c :bd<CR>
 
 " ***********************************************************************
 
@@ -199,7 +204,7 @@ call plug#end()
 
 
 " IndentLine
-    let g:indentLine_enabled = 1
+    let g:indentLine_enabled = 0
     " Set shortcut to toggle indent line
     nnoremap <Leader>i :IndentLinesToggle<CR>
 
@@ -217,7 +222,11 @@ call plug#end()
 " Activate deoplete
     let g:deoplete#enable_at_startup = 0
 
-    let g:echodoc_enable_at_startup = 1
+    let g:echodoc_enable_at_startup = 0
 
     filetype plugin on
-    set omnifunc=syntaxcomplete#Complete
+    " set omnifunc=syntaxcomplete#Complete
+
+
+" vimtex settings
+    let g:tex_flavor = 'latex'
