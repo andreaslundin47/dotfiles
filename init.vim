@@ -1,3 +1,4 @@
+"
 " Specify the directory for plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
@@ -184,9 +185,11 @@ call plug#end()
 
 
 " Python mode
+    let g:pymode_python = 'python3'
     let g:pymode_rope = 0
     let g:pymode_folding = 0
     let g:pymode_options_colorcolumn = 0
+    let g:pymode_lint = 0
 
 
 " Set key to toggle file viewer
