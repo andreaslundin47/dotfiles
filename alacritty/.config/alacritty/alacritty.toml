@@ -1,0 +1,25 @@
+import = [
+	"~/.config/alacritty/dracula_plus.toml"
+]
+
+[window]
+padding.x = 12
+padding.y = 12
+
+decorations = "Buttonless"
+
+opacity = 0.985
+blur = true
+
+option_as_alt = "Both"
+
+[font]
+size = 14.0
+
+[font.normal]
+family = "MesloLGM Nerd Font Mono"
+style = "Regular"
+
+[font.bold]
+family = "MesloLGM Nerd Font Mono"
+style = "Bold"
